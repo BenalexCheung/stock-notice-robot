@@ -1,0 +1,37 @@
+# Python
+*.pyc
+__pycache__/
+venv/
+*.env
+
+# Dependency directories
+/env/
+/lib/
+/pip/
+/build/
+/dist/
+/.eggs/
+/.venv/
+/.tox/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+.komodotools/
+.eclips/
+pydevproject/
+.ipynb_checkpoints/
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Environment variables
+.env
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
