@@ -15,7 +15,6 @@ def upload_image_to_imgbb(image_url):
     if response.status_code == 200:
         image_url = data["data"]["url"]
         # 在这里可以对图像URL进行进一步处理或返回
-        print(data)
         return image_url
     else:
         error_message = data["error"]["message"]
