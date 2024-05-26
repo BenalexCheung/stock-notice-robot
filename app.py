@@ -52,6 +52,8 @@ def job():
 
 **<font color="#FFA500">{additional_info}</font>**
 
+[涨跌停历史数据](https://q.stock.sohu.com/cn/zdt.shtml)
+
 *发送时间: {now_time}* 
 '''
     md = md_template.format(now_time=now_time,
