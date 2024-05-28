@@ -14,12 +14,14 @@ import signal
 # 　　截至今天收盘，此前周线5连阳的沪指也终于收阴，进入弱势调整格局；沪指4月底站上3100点迄今，还不满一个月，今天也首次跌破了。
 def job():
 
-    up_count = [2823, 2823, 2755, 1148, 3108, 735, 1313]
-    down_count = [2342, 1125, 2411, 4093, 2020, 4578, 3851]
-    volumes = [8504, 8901, 9982, 8019., 8343, 8559, 7692]
-    num_days = ['5.16', '5.17', '5.20', '5.21', '5.22', '5.23', '5.24']
+    up_count = [2823, 2823, 2755, 1148, 3108, 735, 1313, 3397, 1149]
+    down_count = [2342, 1125, 2411, 4093, 2020, 4578, 3851, 1760, 4140]
+    limit_up = [63, 96, 61, 34, 55, 39, 58, 45, 34]
+    limit_down = [19, 19, 49, 48, 36, 29, 30, 51, 52]
+    volumes = [8504, 8901, 9982, 8019., 8343, 8559, 7692, 7748, 7417]
+    num_days = ['5.16', '5.17', '5.20', '5.21', '5.22', '5.23', '5.24', '5.27', '5.28']
 
-    image_path = plot_histogram(up_count, down_count, volumes, num_days)
+    image_path = plot_histogram(up_count, down_count, limit_up, limit_down, volumes, num_days)
     time.sleep(1)
 
     image_url = upload_image_to_imgbb(image_path)
@@ -42,15 +44,15 @@ def job():
 
 沪指失守3100点，市场全天冲高回落。截至收盘，沪指跌{shanghai_drop}%，深成指跌{shenzhen_drop}%，创业板指跌{chuangye_drop}%。
 
-板块涨幅居前：**<font color="#dd0000">{leading_sectors}</font>**
+**<font color="#dd0000">板块涨幅居前：{leading_sectors}</font>**
 
-板块跌幅居前：**<font color="#2F4F4F">{declining_sectors}</font>**
+**<font color="#2F4F4F">板块跌幅居前：{declining_sectors}</font>**
 
 全市场超过{total_decliners}只个股下跌，个股跌多涨少。
 
 沪深两市成交额为{trading_volume}，较上个交易日缩量{volume_change}。
 
-**<font color="#FFA500">{additional_info}</font>**
+**<font color="#FFA500">点评：{additional_info}</font>**
 
 [涨跌停历史数据](https://q.stock.sohu.com/cn/zdt.shtml)
 

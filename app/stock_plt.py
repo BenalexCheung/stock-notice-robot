@@ -2,11 +2,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def plot_histogram(up_count, down_count, volumes, num_days):
+def plot_histogram(up_count, down_count, limit_up, limit_down, volumes, num_days):
 
     # 计算每日涨跌比
-    # changes = [(up - down) / (up + down)
-    #            for up, down in zip(up_count, down_count)]
+    changes_limit = [(up - down) / (up + down)
+               for up, down in zip(limit_up, limit_down)]
 
     # 计算涨跌比
     change_ratio = [up / down for up, down in zip(up_count, down_count)]
@@ -28,6 +28,7 @@ def plot_histogram(up_count, down_count, volumes, num_days):
     weighted_indicator = [(up * up_volume_coef) - (down * down_volume_coef)
                           for up, down in zip(up_count, down_count)]
 
+    print("涨跌板比率:", changes_limit)
     print("涨跌比率:", change_ratio)
     print("涨跌百分比:", change_percent)
     print("加权指标:", weighted_indicator)
@@ -45,13 +46,14 @@ def plot_histogram(up_count, down_count, volumes, num_days):
 
     # 绘制每日涨跌比的折线图
     ax2.plot(num_days, change_percent, marker='o', linestyle='-', color='blue')
+    ax2.plot(num_days, changes_limit, marker='o', linestyle='-', color='yellow')
     ax2.set_ylabel('Gain/Loss Ratio')
 
     # 调整第二个纵轴的范围
     ax2.set_ylim([-1, 1])  # 根据实际情况调整范围
 
     # 添加图例
-    ax2.legend(['Gain/Loss Ratio'])
+    ax2.legend(['Gain/Loss Ratio', 'LimitUp/LimitDown'])
 
     # 显示图形
     image_path = 'stock-chart.png'
